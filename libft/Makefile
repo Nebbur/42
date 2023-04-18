@@ -33,7 +33,7 @@ SRCS_O	:= ${SRCS:.c=.o}
 BONUS_O	:= ${BONUS:.c=.o}
 OBJS	:= ${SRCS_O} ${BONUS_O}
 
-CC		:= gcc
+CC		:= cc
 RM		:= /bin/rm -f
 CFLAGS	:= -Wall -Wextra -Werror -I*.h
 
