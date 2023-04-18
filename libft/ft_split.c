@@ -12,80 +12,77 @@
 
 #include "libft.h"
 
-
-static size_t	ft_count_words(char const *s, char c)
+static int	ft_count_words(char const *s, char c)
 {
-	size_t	nb_words;
+	int	nb_words;
+	int	trigger;
 
 	nb_words = 0;
+	trigger = 0;
 	while (*s)
 	{
-		while (*++s == c)
-			;
-		if (*s)
+		if (*s != c && trigger == 0)
+		{
 			nb_words++;
-		while (*++s && *s != c)
-			;
+			trigger = 1;
+		}
+		else if (*s == c)
+			trigger = 0;
+		s++;
 	}
 	return (nb_words);
 }
 
-static char	*ft_strndup(const char *s1, size_t n)
+static char	*split_word(const char *str, int start, int finish)
 {
-	char	*s2;
-	size_t	i;
+	char	*word;
+	int		i;
 
-	if (!(s2 = (char *)malloc(sizeof(char) * (n + 1))))
-		return (NULL);
-	i = -1;
-	while (s1[++i] && i < n)
-		s2[i] = s1[i];
-	s2[i] = '\0';
-	return (s2);
+	i = 0;
+	word = malloc((finish - start + 1) * sizeof(char));
+	while (start < finish)
+		word[i++] = str[start++];
+	word[i] = '\0';
+	return (word);
 }
 
 char        		**ft_split(char const *s, char c)
 {
-	size_t		nb_words;
-	char		**result;
-	size_t		i;
-	size_t		len;
+	char	**result;
+	size_t	i;
+	size_t	j;
+	int		start;
 
 	if (!s)
-		return (NULL);
-	nb_words = ft_count_words(s, c);
-	if (!(result = (char **)malloc(sizeof(char *) * (nb_words + 1))))
-		return (NULL);
-	i = -1;
-	while (*s)
+		return (0);
+	result = malloc((ft_count_words(s, c) + 1) * sizeof(char *));
+	if (!result)
+		return (0);
+	i = 0;
+	j = 0;
+	start = -1;
+	while (i <= ft_strlen(s))
 	{
-		while (*s == c)
-			s++;
-		len = -1;
-		while (s[++len] && s[len] != c)
-			;
-		if (len)
+		if (s[i] != c && start < 0)
+			start = i;
+		else if ((s[i] == c || i == ft_strlen(s)) && start >= 0)
 		{
-			result[++i] = ft_strndup(s, len);
-			if (!result[i])
-			{
-				while (--i)
-					free(result[i]);
-				free(result);
-				return (NULL);
-			}
-			s += len;
+			result[j++] = split_word(s, start, i);
+			start = -1;
 		}
+		i++;
 	}
-	result[i] = NULL;
+	result[j] = 0;
 	return (result);
 }
 
-/*int main()
-{
-	char **res = ft_split("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed gravida pulvinar tortor, ut venenatis magna blandit ac. Etiam sit amet justo vitae odio venenatis tincidunt. Integer at mauris massa.", ' ');
-
-	if (!res)
+//int main()
+//{
+//	char **res = ft_split("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed 
+	//gravida pulvinar tortor, ut venenatis magna blandit ac. Etiam sit amet justo vitae 
+	//odio venenatis tincidunt. Integer at mauris massa.", ' ');
+//
+/*	if (!res)
 	{
 		printf("Error: ft_split() returned NULL\n");
 		return (1);

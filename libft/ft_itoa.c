@@ -29,6 +29,7 @@ size_t     ft_intlen(int n)
 
 static void ft_inttochar(int n, int len, int i, char *str)
 {
+    str[len] = '\0';
     while (i + 1 < len)
     {
         str[len - 1] = n % 10 + 48;
@@ -45,7 +46,7 @@ char                *ft_itoa(int n)
 
     i = -1;
     len = ft_intlen(n);
-    str = (char *)malloc(sizeof(char *) * (len + 1));
+    str = malloc(sizeof(char) * (len + 1));
     if (!str)
         return (NULL);
     if (n == -2147483648)

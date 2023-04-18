@@ -17,9 +17,11 @@ void    *ft_memcpy(void *dest, const void *src, size_t num)
     char            *dest_helper;
     const   char    *src_helper;
 
-    dest_helper = dest;
-    src_helper = src;
-    while (num-- > 0)
-        *dest_helper++ = *src_helper++;
-    return (dest);
+	if (src == NULL && dest == NULL)
+		return (NULL);
+	dest_helper = dest;
+	src_helper = src;
+	while (num-- > 0)
+		*dest_helper++ = *src_helper++;
+	return (dest);
 }

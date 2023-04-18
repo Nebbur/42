@@ -25,20 +25,21 @@ static int      ft_match(char c, char const *set)
 
 char                *ft_strtrim(char const *s1, char const *set)
 {
-    size_t  i;
-    size_t j;
+	size_t  i;
+	size_t j;
+	char *str;
 
-    if (!s1)
-        return (NULL);
-    i = -1;
-    while (ft_match(s1[++i], set) == 1)
-        ;
-    j = ft_strlen(s1);
-    if (i == j)
-        return (ft_strdup(""));
-    while (ft_match(s1[--j], set) == 1)
-        ;
-    j = (j + 1) - i;
-    char *str = ft_substr(s1, i, j);
-    return (str);
+	if (!s1)
+		return (NULL);
+	i = 0;
+	while (ft_match(s1[i], set) == 1)
+		i++;
+	j = ft_strlen(s1);
+	if (i == j)
+		return (ft_strdup(""));
+	while (ft_match(s1[--j], set) == 1)
+		;
+	j = (j + 1) - i;
+	str = ft_substr(s1, i, j);
+	return (str);
 }
