@@ -46,18 +46,12 @@ static char	*split_word(const char *str, int start, int finish)
 	return (word);
 }
 
-char        		**ft_split(char const *s, char c)
+static char	**ft_helper(char const *s, char c, char **result)
 {
-	char	**result;
 	size_t	i;
 	size_t	j;
 	int		start;
 
-	if (!s)
-		return (0);
-	result = malloc((ft_count_words(s, c) + 1) * sizeof(char *));
-	if (!result)
-		return (0);
 	i = 0;
 	j = 0;
 	start = -1;
@@ -76,13 +70,23 @@ char        		**ft_split(char const *s, char c)
 	return (result);
 }
 
-//int main()
-//{
-//	char **res = ft_split("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed 
-	//gravida pulvinar tortor, ut venenatis magna blandit ac. Etiam sit amet justo vitae 
-	//odio venenatis tincidunt. Integer at mauris massa.", ' ');
-//
-/*	if (!res)
+char	**ft_split(char const *s, char c)
+{
+	char	**result;
+
+	if (!s)
+		return (0);
+	result = malloc((ft_count_words(s, c) + 1) * sizeof(char *));
+	if (!result)
+		return (0);
+	return (ft_helper(s, c, result));
+}
+
+/*int main()
+{
+	char **res = ft_split("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed gravida pulvinar tortor, ut venenatis magna blandit ac. Etiam sit amet justo vitae odio venenatis tincidunt. Integer at mauris massa.", ' ');
+
+	if (!res)
 	{
 		printf("Error: ft_split() returned NULL\n");
 		return (1);

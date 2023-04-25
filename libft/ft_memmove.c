@@ -12,14 +12,14 @@
 
 #include "libft.h"
 
-static void    *ft_revmemcpy(void *dest, const void *src, size_t num)
+static void	*ft_revmemcpy(void *dest, const void *src, size_t num)
 {
 	while (num-- > 0)
 		((unsigned char *)dest)[num] = ((unsigned char *)src)[num];
 	return (dest);
 }
 
-void    *ft_memmove(void *dest, const void *src, size_t num)
+void	*ft_memmove(void *dest, const void *src, size_t num)
 {
 	if (((unsigned char *)dest) == ((unsigned char *)src))
 		return (dest);

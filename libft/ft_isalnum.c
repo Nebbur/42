@@ -12,7 +12,11 @@
 
 #include "libft.h"
 
-int		    ft_isalnum(int c)
+#include "libft.h"
+
+int	ft_isalnum(int c)
 {
-	return ((c <= 57 && c >= 48) || (c <= 'z' && c >= 'a') || (c <= 'Z' && c >= 'A'));
+	if (c <= 57 && c >= 48)
+		return (c);
+	return ((c <= 'z' && c >= 'a') || (c <= 'Z' && c >= 'A'));
 }

@@ -40,11 +40,11 @@ CFLAGS	:= -Wall -Wextra -Werror -I*.h
 CL := ar -rc
 RL := ar -s
 
+all: ${NAME} bonus
+
 ${NAME}: ${SRCS_O}
 	${CL} ${NAME} ${SRCS_O}
 	${RL} ${NAME}
-
-all: ${NAME}
 
 bonus:	${BONUS_O}
 		${CL} ${NAME} ${BONUS_O}

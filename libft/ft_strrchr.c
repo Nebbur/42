@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char                *ft_strrchr(const char *str, int d)
+char	*ft_strrchr(const char *str, int d)
 {
 	int	i;
 

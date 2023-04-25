@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-void    *ft_memcpy(void *dest, const void *src, size_t num)
+void	*ft_memcpy(void *dest, const void *src, size_t num)
 {
-    char            *dest_helper;
-    const   char    *src_helper;
+	const char	*src_helper;
+	char		*dest_helper;
 
 	if (src == NULL && dest == NULL)
 		return (NULL);

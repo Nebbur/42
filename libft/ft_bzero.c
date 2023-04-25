@@ -12,11 +12,11 @@
 
 #include "libft.h"
 
-void    ft_bzero(void *ptr, size_t num)
+void	ft_bzero(void *ptr, size_t num)
 {
-    char   *ptr_helper;
+	char	*ptr_helper;
 
-    ptr_helper = (char *)ptr;
-    while (num-- > 0)
-        *ptr_helper++ = '\0';
+	ptr_helper = (char *)ptr;
+	while (num-- > 0)
+		*ptr_helper++ = '\0';
 }
