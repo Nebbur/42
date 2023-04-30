@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboia-pe <rboia-pe@student.42porto.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int	ft_isolate_line(char *str)
 {
@@ -18,16 +18,17 @@ int	ft_isolate_line(char *str)
 	int	j;
 	int	checker;
 
-	i = -1;
-	j = -1;
+	i = 0;
+	j = 0;
 	checker = 0;
-	while (str[++i])
+	while (str[i])
 	{
 		if (checker)
-			str[++j] = str[i];
+			str[j++] = str[i];
 		if (str[i] == '\n')
 			checker = 1;
 		str[i] = '\0';
+		i++;
 	}
 	return (checker);
 }

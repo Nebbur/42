@@ -33,7 +33,7 @@ ${NAME}: ${SRCS_O}
 	${RL} ${NAME}
 
 clean:
-	${RM} ${OBJS}
+	${RM} ${OBJS} ./a.out
 
 fclean: clean
 	${RM} ${NAME}
