@@ -36,7 +36,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/*int	main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	char	*line;
 	int		i;
@@ -72,4 +72,4 @@ char	*get_next_line(int fd)
 	close(fd2);
 	close(fd3);
 	return (0);
-}*/
+}

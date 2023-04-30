@@ -22,9 +22,9 @@
 # include	<string.h>
 # include	<unistd.h>
 
-/*#include <fcntl.h>
+#include <fcntl.h>
 #include <sys/uio.h>
-#include <sys/types.h>*/
+#include <sys/types.h>
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *str);
